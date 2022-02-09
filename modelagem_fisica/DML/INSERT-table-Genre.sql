@@ -1,0 +1,22 @@
+
+insert into genre (id_genre, name_genre) values
+(default, 'Young Adult'),
+(default,'children'),
+(default, 'fiction'),
+(default, 'romance'),
+(default, 'biography'),
+(default, 'self care'),
+(default, 'drama'),
+(default, 'fable'),
+(default, 'fantasy'),
+(default, 'folklore'),
+(default, 'horror'),
+(default, 'humor'),
+(default, 'legend'),
+(default, 'mistery'),
+(default, 'poetry'),
+(default, 'narrative'),
+(default, 'nonfiction'),
+(default, 'science fiction'),
+(default, 'young adult'),
+(default, 'memoir');
