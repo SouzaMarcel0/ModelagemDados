@@ -451,3 +451,8 @@ INSERT INTO public.book (fk_cod_author,title,languages,genre,written_year) VALUE
 (default,'Wrinkles in Time','en-US',13,2010),
 (default,'Writing','en-US',10,2010),
 (default,'Zen and the Art of Motorcycle Maintenance: An Inquiry Into Values (Phaedrus #1)','eng',8,2010);
+
+--------- Linhas excluidas para falicitar o trabalho de criação de base e posterior inserção -------
+
+delete from book 
+where cod_book >= 313;
