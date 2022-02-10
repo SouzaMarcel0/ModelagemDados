@@ -15,6 +15,12 @@ CREATE TABLE book (
     constraint fk_cod_book foreign key (fk_cod_author) references author (cod_author)
 );
 
+-- Coluna deleta, pois não havia necessidade, pois o registro de relação se dará na tabela REGISTER
+alter table book drop column fk_cod_author;
+
+-- Limpeza da tabela para inserção dos registros de livros, respeitando o registro único para cada obra
+truncate table book cascade;
+
 CREATE TABLE Address (
     ZIP_CODE INTEGER not null primary key,
     STATE VARCHAR(30),
