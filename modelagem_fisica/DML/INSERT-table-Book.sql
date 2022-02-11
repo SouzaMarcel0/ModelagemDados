@@ -244,7 +244,7 @@ INSERT INTO public.book (fk_cod_author,title,languages,genre,written_year) VALUE
 
 	 ------------- Novo_Insert ---------------------
 
-	 insert into book (cod_book, title, languages, genre, written_year) values 
+insert into book (cod_book, title, languages, genre, written_year) values 
 (default,'100 Years of Lynchings','eng',13,2017),
 (default,'1000 Record Covers','en-US',20,2017),
 (default,'A Book of Common Prayer','eng',14,2017),
