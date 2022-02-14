@@ -73,9 +73,53 @@ select full_name , (current_date - born_date)/365 as idade from author a
 order by idade;
 
 
-select title , genre from book b ;
-group by title , genre 
-having count(*) > 1;
+-- View para consultar o total de Livros na tabela de registro e na tabela de edição
+
+CREATE OR REPLACE VIEW public.qtde_total_livros
+AS SELECT sum(r.current_amount) AS soma_register,
+    sum(e.amount) AS soma_edition
+   FROM register r
+     JOIN edition e ON r.fk_cod_book = e.fk_cod_book;
+    
+select * from qtde_total_livros qtl ;
+
+--- Função para consultar média de 2 valores.
+
+CREATE OR REPLACE FUNCTION public.fn_media(valor1 double precision, valor2 double precision)
+ RETURNS double precision
+ LANGUAGE plpgsql
+AS $function$
+declare 
+	soma float;
+	resultado float;
+begin
+	soma = (valor1 + valor2);
+	resultado = (soma/2);
+return
+	resultado;
+end; 
+$function$
+;
+
+--------- Função para consultar preo por página de livro consultando pelo código do book
+
+CREATE OR REPLACE FUNCTION public.fn_price_by_page(cod1 integer)
+ RETURNS money
+ LANGUAGE plpgsql
+AS $function$
+declare 
+	cod int;
+	resultado money;
+begin
+	cod = cod1;
+	resultado = (select (price/pages) as price_by_page from edition e where fk_cod_book = cod);
+return
+resultado;
+end; 
+$function$
+;
+
+
 
 
 
