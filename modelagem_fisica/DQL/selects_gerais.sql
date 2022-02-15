@@ -119,7 +119,12 @@ end;
 $function$
 ;
 
+---------- Union-------------
 
+select fk_cod_book, current_amount from register r 
+union all 
+select fk_cod_book, amount from edition e 
+order by fk_cod_book ;
 
 
 
