@@ -139,6 +139,22 @@ union all
 select fk_cod_book, amount from edition e 
 order by fk_cod_book ;
 
+---------------------------------Trigger-----------------
+
+create or replace procedure insert_author (varchar, varchar, date, varchar, varchar) language 'plpgsql'
+as $$
+begin 
+	insert into author (full_name, sex, born_date, country, bio) 
+	values ($1, $2, $3, $4, $5);
+commit;
+end;
+$$;
+
+--Testando Trigger:
+call insert_author ('Marcelo Souza', 'Man', '1988-12-09', 'Brazil', 'Simples e objetivo');
+select * from author a 
+where full_name like '%Marce%';
+
 
 
 
