@@ -68,7 +68,7 @@ where written_year in (2017, 2019);
 select * from author a 
 where sex != 'man' and sex != 'woman';
 
--- Projetando a idade dos Authores
+-- Projetando a idade dos Authores (VIEW)
 select full_name , (current_date - born_date)/365 as idade from author a 
 order by idade;
 
@@ -118,6 +118,19 @@ resultado;
 end; 
 $function$
 ;
+
+-------- Função/Select que consome dados de uma VIEW -------------
+
+SELECT full_name, idade,
+       CASE
+           WHEN idade>= 0
+                AND idade <= 10 THEN 'Novo'
+           WHEN idade >= 11
+                AND idade <= 30 THEN 'Adulto'
+           WHEN idade >= 31 THEN 'Experiente'
+       END Tempo_Vida
+FROM age_author aa 
+ORDER BY idade desc ;
 
 ---------- Union-------------
 
