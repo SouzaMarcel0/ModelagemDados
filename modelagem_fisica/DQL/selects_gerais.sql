@@ -2,20 +2,6 @@
 
 -- Projetando a tabela com todos os dados das tabelas:
 
-select * from register r ;
-
-select * from book b ;
-
-select * from author a ;
-
-select * from genre g ;
-
-select * from address a ;
-
-select * from publishing p ;
-
-select * from edition e ;
-
 -- Projetar a quantidade de livros cadastrados distintos na base de dados:
 select distinct count(*) title from book b ;
 
@@ -101,7 +87,7 @@ end;
 $function$
 ;
 
---------- Função para consultar preo por página de livro consultando pelo código do book
+--------- Função para consultar preço por página de livro consultando pelo código do book
 
 CREATE OR REPLACE FUNCTION public.fn_price_by_page(cod1 integer)
  RETURNS money
@@ -139,6 +125,14 @@ union all
 select fk_cod_book, amount from edition e 
 order by fk_cod_book ;
 
+----------------- Tabela criada para guardar registros da Trigger ---------------
+
+create table update_edition (
+cod_isbn varchar (15),
+price_b money,
+amount_a integer
+)
+
 ---------------------------------Trigger-----------------
 
 create or replace procedure insert_author (varchar, varchar, date, varchar, varchar) language 'plpgsql'
@@ -154,6 +148,8 @@ $$;
 call insert_author ('Marcelo Souza', 'Man', '1988-12-09', 'Brazil', 'Simples e objetivo');
 select * from author a 
 where full_name like '%Marce%';
+
+
 
 
 
